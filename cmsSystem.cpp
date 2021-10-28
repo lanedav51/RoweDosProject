@@ -10,7 +10,7 @@ using namespace std;
 
 
 
-int main()
+bool login()
 {
     string choice1; //holds value for users choice in register/Login/Exit
     string storedUN, storedPass; // User name and password stored in db
@@ -61,18 +61,34 @@ int main()
                 if (inputUN==storedUN && inputPass==storedPass) //checks if given username and password match the ones in the DB
                 {
                     cout << "Login Succesful!" << endl << endl;
-                    break;
+                    return true;
                 }
                 cout << "Incorrect Username or Password" << endl;
+                return false;
             }
 
         }
 
         if (choice1=="3") //if user selects 3 and wants to exit the program
         {
-            return 1;
+            return false;
         }
 
     }
-    return 1;
+    return false;
+}
+
+int main()
+{
+    bool auth = login();
+
+    while(auth == false) //loops login until user chooses to stop
+    {
+        auth = login();
+    }
+
+    //Welcome user and begin options (create new function)
+
+    //
+
 }
