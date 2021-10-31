@@ -122,6 +122,8 @@ bool contentSys(int UID, string user) //FILE TRANSFER PROTOCOLS NEEDED FROM USER
            case 4:
             //list
             break;;
+           case 5:
+               editPermissions();
            default:
             cout << "Please choose using numbers 1-4" << endl;
             loop = true;
@@ -188,9 +190,56 @@ bool listContent(int UID)
 
 bool editPermissions()
 {
-    //Choose username
-    //Choose options with user (list content, delete content, add to user, etc)
+    string userToEdit;
+    cout << "Select a user to edit permissions for by entering username, or type add/remove to modify list of current users:" << endl;
+    cin >> userToEdit; //Choose username
+    string permissionLevel;
+    if (userToEdit == "add") {
+        string pass1;
+        string pass2;
+        cout << "Enter username of user to be added: ";
+        cin >> userToEdit;
+        //add user to list of users
+        cout << "Enter password for that user: ";
+        cin >> pass1;
+        cout << "Re-enter password: ";
+        cin >> pass2;
+        if (pass1 == pass2) { //check if passwords match
+            //add password to file matching to username^
+            cout << "Enter permission level for new user\n(1) User\n(2) Admin\n";
+            int level;
+            cin >> level;
+            bool loop;
+            loop = true;
+            switch (level)
+            {
+            case 1:
+                //add user
+                break;;
+            case 2:
+                //add admin
+                break;;
+            default:
+                cout << "Please enter only 1 or 2" << endl;
+                break;;
+                loop = true;
+            }while (loop == true);
+        }
+        else {
+            cout << "Passwords did not match!\n";
+        }
+    }
+    else if (userToEdit == "remove") {
+
+    }
+    else {
+        //userToEdit.getPermissionLevel(); //need to add get and set for modifying user info
+        cout << "These are the current permissions for this user: " << permissionLevel;
+        //Choose options with user (list content, delete content, add to user, etc)
+        cout << "What would you like to modify?\n(1) Output user info\n (2) Add permissions\n (3) Remove permissions\n";
+    }
     //Delete users, add new user manually (register)
+    
     //Remove content owners, add content owners, etc
 }
 
