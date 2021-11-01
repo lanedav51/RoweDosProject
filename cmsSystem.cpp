@@ -27,6 +27,7 @@ string login()
         if (choice1=="1") // if user selects 1 this will register them
         {
             registerUser();
+            break;
         }
 
         if (choice1=="2") // if user selects 2 this will take them to login
@@ -87,7 +88,8 @@ string loginAtt()
                 if (inputUN==storedUN && inputPass==storedPass) //checks if given username and password match the ones in the DB
                 {
                     cout << "Login Succesful!" << endl << endl;
-                    return true;
+                    //return true; //should return login username
+                    return inputUN;
                 }
                 cout << "Incorrect Username or Password" << endl; //CHECK WHICH IS WRONG FOR FUTURE ITERATIONS
             }
@@ -243,7 +245,7 @@ bool editPermissions()
     //Remove content owners, add content owners, etc
 }
 
-int main()
+/*int main()
 {
     string user = login();
     int UID;
@@ -254,13 +256,14 @@ int main()
 
     
 
-}
+}*/
 
 int main()
 {
-    bool auth = login();
+    //bool auth = login(); //Should be string so we can return username like above, we need to pass that user in order to authorize access to files, check group, etc
+    string auth;
 
-    while(auth == false) //loops login until user chooses to stop
+    while(auth == "false") //loops login until user chooses to stop
     {
         auth = login();
     }
